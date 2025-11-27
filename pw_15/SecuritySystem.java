@@ -13,7 +13,6 @@ public class SecuritySystem {
     }
     
     public void detectIntruder(String location) {
-        System.out.println("Обнаружено движение в: " + location);
         IntruderDetectedEvent event = new IntruderDetectedEvent(this, location);
         notifyListeners(event);
     }
