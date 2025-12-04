@@ -1,6 +1,10 @@
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
-        PaintFrame frame = new PaintFrame();
-        frame.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            PaintFrame frame = new PaintFrame();
+            frame.setVisible(true);
+        });
     }
 }

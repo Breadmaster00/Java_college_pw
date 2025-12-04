@@ -1,7 +1,8 @@
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PaintLine {
+public class PaintLine implements Serializable {
     private ArrayList<Point> points;
     private Color color;
     private int thickness;
