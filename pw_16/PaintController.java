@@ -23,7 +23,7 @@ public class PaintController {
     }
 
     private void setupListeners() {
-        // Кнопка "Очистить холст"
+        // Кнопка очиститки холста
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,7 +41,6 @@ public class PaintController {
             }
         });
 
-        // Кнопки выбора цвета (теперь это цветные квадраты)
         for (int i = 0; i < colorButtons.length; i++) {
             final int index = i;
             colorButtons[i].addActionListener(new ActionListener() {
@@ -49,7 +48,6 @@ public class PaintController {
                 public void actionPerformed(ActionEvent e) {
                     paintPanel.setCurrentColor(colors[index]);
                     
-                    // Визуальная обратная связь - рамка для выбранного цвета
                     for (JButton button : colorButtons) {
                         button.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 1));
                     }
@@ -58,7 +56,6 @@ public class PaintController {
             });
         }
 
-        // Ползунок толщины
         thicknessSlider.addChangeListener(e -> {
             paintPanel.setCurrentThickness(thicknessSlider.getValue());
         });

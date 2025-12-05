@@ -5,8 +5,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class PaintPanel extends JPanel {
-    private ArrayList<PaintLine> lines;  // Храним отдельные линии
-    private ArrayList<Point> currentPoints; // Текущая рисуемая линия
+    private ArrayList<PaintLine> lines;
+    private ArrayList<Point> currentPoints;
     private Color currentColor;
     private int currentThickness;
 
@@ -17,25 +17,21 @@ public class PaintPanel extends JPanel {
         currentThickness = 5;
         setBackground(Color.WHITE);
 
-        // Обработка событий мыши
         MouseAdapter mouseAdapter = new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                // Начинаем новую линию
                 currentPoints = new ArrayList<>();
                 currentPoints.add(e.getPoint());
             }
 
             @Override
             public void mouseDragged(MouseEvent e) {
-                // Добавляем точку в текущую линию и перерисовываем
                 currentPoints.add(e.getPoint());
                 repaint();
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                // Завершаем текущую линию и сохраняем ее
                 if (!currentPoints.isEmpty()) {
                     lines.add(new PaintLine(
                         new ArrayList<>(currentPoints),
@@ -70,12 +66,10 @@ public class PaintPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        // Рисуем все сохраненные линии
         for (PaintLine line : lines) {
             line.draw(g2d);
         }
 
-        // Рисуем текущую линию (если она есть)
         if (!currentPoints.isEmpty()) {
             g2d.setColor(currentColor);
             g2d.setStroke(new BasicStroke(currentThickness));
